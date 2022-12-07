@@ -1,11 +1,11 @@
 {
     "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
-    "itemDisplayName": "Azure Synapse Proof-of-Concept",
-    "description": "This template creates a proof of concept environment for Azure Synapse, including SQL Pools and optional Apache Spark Pools",
-    "summary": "Azure Synapse Proof-of-Concept",
+    "itemDisplayName": "Schedule Off Synpase Dedicated Pool",
+    "description": "This template creates a Logic App to schedule pausing of Synapse dedicated pool",
+    "summary": "Pause Synapse dedicated pool",
     "validationType": "Manual",
-    "githubUsername": "JamJarchitect",
-    "dateUpdated": "2020-09-10",
+    "githubUsername": "gianlucadardia",
+    "dateUpdated": "2022-12-01",
     "type": "QuickStart",
     "environments": [
       "AzureCloud"

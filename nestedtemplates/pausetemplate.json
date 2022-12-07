@@ -5,12 +5,6 @@
     "location": {
       "type": "string"
     },
-    "companyTla": {
-      "type": "string"
-    },
-    "deploymentType": {
-      "type": "string"
-    },
     "LogicAppName": {
       "type": "string"
     },
@@ -22,13 +16,21 @@
     },
     "PauseTime": {
       "type": "string"
+    },
+    "Synapseworkspacename": {
+      "type": "string"
+    },
+    "Resourcegroupname": {
+      "type": "string"
+    },
+    "Sqlpoolname": {
+      "type": "string"
     }
+
   },
   "variables": {
     "pauseTimeHour": "[split(substring(parameters('PauseTime'), 11, 5), ':')[0]]",
-    "recurrenceHours": [
-      "[variables('pauseTimeHour')]"
-    ],
+    "recurrenceHours": ["[variables('pauseTimeHour')]"],
     "recurrenceMinutes": [ 0 ],
     "pauseTimeString": "[substring(parameters('PauseTime'), 0, 8)]",
     "dailySchedule": [
@@ -48,10 +50,9 @@
       "Friday"
     ],
     "recurrenceSchedule": "[if(equals(parameters('Frequency'), 'Weekdays'), variables('weekdaySchedule'), variables('dailySchedule'))]",
-    "deploymentType": "poc",
-    "synapseName": "[toLower(concat(parameters('companyTla'),uniquestring(resourceGroup().id),variables('deploymentType')))]",
-    "sqlPoolName": "[toLower(concat(variables('workspaceName'),'p1'))]",
-    "workspaceName": "[toLower(concat(variables('synapseName'),'ws1'))]",
+    "Synapseworkspacename": "[parameters('Synapseworkspacename')]",
+    "Resourcegroupname": "[parameters('Resourcegroupname')]",
+    "Sqlpoolname": "[parameters('Sqlpoolname')]",
     "getRESTAPI": "subscriptions/@{variables('RestAPIVariables')['SubscriptionId']}/resourceGroups/@{variables('RestAPIVariables')['ResourceGroupName']}/providers/Microsoft.Synapse/workspaces/@{variables('RestAPIVariables')['workspaceName']}/sqlPools/@{variables('RestAPIVariables')['sqlPoolName']}?api-version=2019-06-01-preview",
     "pauseRESTAPI": "subscriptions/@{variables('RestAPIVariables')['SubscriptionId']}/resourceGroups/@{variables('RestAPIVariables')['ResourceGroupName']}/providers/Microsoft.Synapse/workspaces/@{variables('RestAPIVariables')['workspaceName']}/sqlPools/@{variables('RestAPIVariables')['sqlPoolName']}/pause?api-version=2019-06-01-preview",
     "aqcRESTAPI": "subscriptions/@{variables('RestAPIVariables')['SubscriptionId']}/resourceGroups/@{variables('RestAPIVariables')['ResourceGroupName']}/providers/Microsoft.Synapse/workspaces/@{variables('RestAPIVariables')['WorkspaceName']}/sqlpools/@{variables('RestAPIVariables')['SQLPoolName']}/dataWarehouseUserActivities/current?api-version=2019-06-01-preview",
@@ -79,9 +80,9 @@
                     "name": "RestAPIVariables",
                     "type": "Object",
                     "value": {
-                      "workspaceName": "[variables('workspaceName')]",
-                      "sqlPoolName": "[variables('sqlPoolName')]",
-                      "ResourceGroupName": "[resourceGroup().name]",
+                      "workspaceName": "[variables('Synapseworkspacename')]",
+                      "sqlPoolName": "[variables('Sqlpoolname')]",
+                      "ResourceGroupName": "[variables('Resourcegroupname')]",
                       "SubscriptionId": "[subscription().subscriptionId]",
                       "TenantId": "[subscription().tenantId]",
                       "ScheduleTimeZone": "[parameters('timeZone')]",
