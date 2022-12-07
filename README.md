@@ -3,9 +3,9 @@
 Many customer has cost concern related to **Synapse Analytics Dedicated Pool** usage. 
 Especially in product evaluation phase, customer needs to keep cost under strict control
 
-Capabilities to pause dedicated pool, could help to mitigate this concern, but the lack of "Native" way to perform this task, could be an entry barrier.
+Capabilities to pause dedicated pool, could help to mitigate this concern, but the lack of **"Native"** way to perform this task, could be an entry barrier.
 
-This 1-click deployment, try to help, allowing user to deploy a Logic App that can **Pause Synapse Dedicated Pool** on sheduled base.
+This 1-click deployment, try to help, allowing user to deploy a Logic App that can **Pause Synapse Dedicated Pool** on scheduled basis.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ Owner role (or Contributor roles) for the Azure Subscription the template being 
 ![Deployment-1](https://github.com/gianlucadardia/Schedule_Off_Synapse_Dedicated_Pool/raw/main/images/deployment01.jpg)
 
 ## Azure Services being deployed
-This template deploys necessary resources to run a scheduled Logic App, to Pause Synaps Dedicated Pool, specified on configuration phase
+This template deploys necessary resources to run a scheduled Logic App, to Pause Synaps Dedicated Pool, specified at configuration phase
 
 Following resources are deployed with this template along with some RBAC role assignments:
 
