@@ -1,12 +1,11 @@
 ## Azure Synapse - Schedule Dedicated Pool OFF 
 
-Many customer are worried about cost to incur using Synapse Analytics dedicated pool. 
-Especially during product evaluation, customer wants to afford "least cost as possible"
+Many customer has cost concern related to **Synapse Analytics Dedicated Pool** usage. 
+Especially in product evaluation phase, customer needs to keep cost under strict control
 
-The capabilities to pause dedicated pool, really hep to achieve this aim,
-but the lack of "integrated" way to perform it, has a bittersweet taste.
+Capabilities to pause dedicated pool, could help to mitigate this concern, but the lack of "Native" way to perform this task, could be an entry barrier.
 
-This 1-click deployment, allows user to deploy a Logic App to enable creation of Logic app to schedule "Turn off Synapse dedicated pool" wherever  dedicated pool is.
+This 1-click deployment, try to help, allowing user to deploy a Logic App that can **Pause Synapse Dedicated Pool** on sheduled base.
 
 ## Prerequisites
 
@@ -22,7 +21,7 @@ Owner role (or Contributor roles) for the Azure Subscription the template being 
 
      - Resource group (create new)**
      - Logic App name
-     - Dedicated pool name (ones you want to turn off)
+     - Dedicated Pool name (ones you want to turn off)
      - Synapse workspace resource group
      - Synapse Workspace name
      - Frequency
@@ -63,3 +62,13 @@ Logic app, in order to puase dedicated pool, on scheduled basis perform followin
 
 ### Limitation
 - Currently Logic App need to be deployed in the same resource group of synpase workspace
+
+## Enhancement
+
+Once logic app is deployed, you can further customize behavior, adding any kind of step, leveraging its large number of connectors
+
+e.g.
+- Send email notification
+- Trigger specific Workflow
+- Starting DataOps pipeline
+- .........
