@@ -1,4 +1,4 @@
-## Azure Synapse - Schedule Dedicated Pool OFF 
+## Azure Synapse - Schedule Dedicated Pool Pause
 
 Many customer has cost concern related to **Synapse Analytics Dedicated Pool** usage. 
 Especially in product evaluation phase, customer needs to keep cost under strict control
@@ -22,7 +22,7 @@ Owner role (or Contributor roles) for the Azure Subscription the template being 
      - Resource group (create new)**
      - Logic App name
      - Dedicated Pool name (ones you want to turn off)
-     - Synapse workspace resource group
+     - Synapse Workspace resource group
      - Synapse Workspace name
      - Frequency
      - Time Zone
@@ -40,8 +40,8 @@ This template deploys necessary resources to run a scheduled Logic App, to Pause
 
 Following resources are deployed with this template along with some RBAC role assignments:
 
-- A Logic App to Pause the SQL Pool at defined schedule
-- Assign contributor role to Logic App Managed Identity
+- A **Logic App** to Pause the SQL Dedicate Pool at defined schedule
+- Assign **contributor role** to Logic App Managed Identity
 
 ## Post Deployment
 - After the deployment is complete, click 'Go to resource group'.
@@ -51,21 +51,21 @@ Following resources are deployed with this template along with some RBAC role as
 ## Technical details
 
 ### Behavior
-Logic app, in order to puase dedicated pool, on scheduled basis perform following steps:
+Logic App perform following steps:
 - Inititalize variables needed to launch commands
 - Retrieve dedicated pool state
-- If pool is paused, nothing happens
-- If pool is Online, logi app wait until there are no running queries and turn off the pool
+- If it's **Paused**, nothing happens
+- If it's **Online**, Logic App wait until there are no running queries and then **Pause** the pool
 
 ![Details-1](https://github.com/gianlucadardia/Schedule_Off_Synapse_Dedicated_Pool/raw/main/images/techdetails01.jpg)
 
 
 ### Limitation
-- Currently Logic App need to be deployed in the same resource group of synpase workspace
+- Logic App need to be deployed in the same resource group of Synpase Workspace
 
 ## Enhancement
 
-Once logic app is deployed, you can further customize behavior, adding any kind of step, leveraging its large number of connectors
+Once Logic App is deployed, you can further customize behavior, adding any kind of step, leveraging its large number of connectors
 
 e.g.
 - Send email notification
